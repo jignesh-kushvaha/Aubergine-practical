@@ -11,7 +11,7 @@ function University({Data}){
                         <div className="card-body">
                             <h5 className="card-title">{item.name}</h5>
                             <p className="card-text">{item.country}</p>
-                            <a href={item.web_pages[0]} class="btn btn-primary">link</a>
+                            <a href={item.web_pages[0]} className="btn btn-primary">link</a>
                         </div>
                     </div>
                     </div>

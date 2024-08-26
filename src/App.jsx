@@ -1,13 +1,24 @@
 import { useState,useEffect } from "react";
 import "./App.css";
 import University from "./Component/University";
+import Pagination from "./Component/Pagination";
 
 function App() {
   const [initialData, setInitialData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [val, setVal] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(20);
 
+
+
+
+  const indexOfLastPage = currentPage * postPerPage;
+  const indexOfFirstPage = indexOfLastPage - postPerPage;
+
+  let currentPageDatas = filterData.slice(indexOfFirstPage, indexOfLastPage);
+  console.log("indexOfFirstPage"+ indexOfFirstPage);
   function handleSearch(){
     setFilterData(initialData.filter(item => item.country.toLowerCase().includes(val.toLowerCase())));
     console.log(filterData);
@@ -30,7 +41,8 @@ function App() {
         <input type="text" placeholder="Countrywise search" val={val} onChange={(e)=>setVal(e.target.value)}/>
         <button onClick={handleSearch}>Search</button>
       </div>
-      <University Data={filterData}/>
+      <University Data={currentPageDatas}/>
+      <Pagination totalPosts={filterData.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}/>
     </div>
   );
 }
