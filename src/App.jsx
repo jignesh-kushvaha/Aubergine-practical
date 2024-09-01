@@ -11,14 +11,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(20);
 
-
-
-
   const indexOfLastPage = currentPage * postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
 
   let currentPageDatas = filterData.slice(indexOfFirstPage, indexOfLastPage);
-  console.log("indexOfFirstPage"+ indexOfFirstPage);
+
   function handleSearch(){
     setFilterData(initialData.filter(item => item.country.toLowerCase().includes(val.toLowerCase())));
     console.log(filterData);
