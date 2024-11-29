@@ -8,12 +8,6 @@ function Pagination({ totalPosts, postPerPage, setCurrentPage }) {
   const pagesPerGroup = totalPosts > 10 ? 10 : totalPosts
   const startPage = currentPageGroup * pagesPerGroup + 1;
   const endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
-  
-  // let pages = [];
-
-  // for (let i = 1; i < Math.ceil(totalPosts / postPerPage); i++) {
-  //   pages.push(i);
-  // }
 
   const pages = [];
   for (let i = startPage; i <= endPage; i++) {
