@@ -1,5 +1,4 @@
 function University({Data}){
-    console.log(Data)
     return(
         <>
             <div className="row">
